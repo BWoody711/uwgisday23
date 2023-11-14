@@ -9,7 +9,7 @@
   import "@arcgis/core/assets/esri/themes/light/main.css";
 
   esriConfig.apiKey =
-    "AAPK77b67524572349b8b5df44655f368923grzTysj-uIREgjCMU52otjoA4UoQQKnPQTf0dWkjDkAH7SjBxJWGEyk_NvR-MelB";
+    "";
 
   let map, streetTrees;
 
