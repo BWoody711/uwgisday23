@@ -1,0 +1,1 @@
+import{a_ as u,a$ as i,b0 as a}from"./index-20a3a931.js";const c=96;function p(n,t){const r=t||n.extent,o=n.width,e=u(r==null?void 0:r.spatialReference);return r&&o?r.width/o*e*i*c:0}function $(n,t){return n/(u(t)*i*c)}function h(n,t,r){return f(n,t)&&s(n,r)}function f(n,t){return t===0||a(n,t)||n<t}function s(n,t){return t===0||a(n,t)||n>t}export{h as d,p as i,$ as o};
