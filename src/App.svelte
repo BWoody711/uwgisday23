@@ -80,8 +80,8 @@
     //Create a layer object to import the street trees layer from ArcGIS Online
     streetTrees = new FeatureLayer({
       url: "https://services1.arcgis.com/DwLTn0u9VBSZvUPe/arcgis/rest/services/Uptown_Trees_Joined/FeatureServer",
-      // renderer: streetTreesRenderer,
-      // popupTemplate: popup,
+      renderer: streetTreesRenderer,
+      popupTemplate: popup,
     });
 
     //Add the street trees layer to your map
