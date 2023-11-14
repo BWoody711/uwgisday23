@@ -27,55 +27,55 @@
       center: [-80.5238211, 43.4650994], // longitude, latitude
     });
 
-    // //Specify layer symbology
-    // const streetTreesRenderer = {
-    //   type: "simple",
-    //   symbol: {
-    //     type: "simple-marker",
-    //     style: "circle",
-    //     color: "green",
-    //     size: "14px",
-    //     outline: {
-    //       color: "white",
-    //       width: 1,
-    //     },
-    //   },
-    // };
+    //Specify layer symbology
+    const streetTreesRenderer = {
+      type: "simple",
+      symbol: {
+        type: "simple-marker",
+        style: "circle",
+        color: "green",
+        size: "14px",
+        outline: {
+          color: "white",
+          width: 1,
+        },
+      },
+    };
 
-    // //Specify a template for the popup that appears when you click on a street tree
-    // const popup = {
-    //   title: "{English_Name}",
-    //   content: [{
-    //     type: "fields",
-    //     fieldInfos: [
-    //       {
-    //         fieldName: "DBH",
-    //         label: "Diameter at Breast Height",
-    //         visible: true,
-    //       },
-    //       {
-    //         fieldName: "Species_at_Risk",
-    //         label: "At Risk Species",
-    //         visible: true,
-    //       },
-    //       {
-    //         fieldName: "Native_to_Ontario",
-    //         label: "Native Species",
-    //         visible: true,
-    //       },
-    //       {
-    //         fieldName: "Ontario_Tree_Atlas_Entry",
-    //         label: "Ontario Tree Atlas Entry",
-    //         visible: true,
-    //       },
-    //       {
-    //         fieldName: "Trees_of_Canada_Entry",
-    //         label: "Trees of Canada Entry",
-    //         visible: true,
-    //       },
-    //     ],
-    //   }],
-    // };
+    //Specify a template for the popup that appears when you click on a street tree
+    const popup = {
+      title: "{English_Name}",
+      content: [{
+        type: "fields",
+        fieldInfos: [
+          {
+            fieldName: "DBH",
+            label: "Diameter at Breast Height",
+            visible: true,
+          },
+          {
+            fieldName: "Species_at_Risk",
+            label: "At Risk Species",
+            visible: true,
+          },
+          {
+            fieldName: "Native_to_Ontario",
+            label: "Native Species",
+            visible: true,
+          },
+          {
+            fieldName: "Ontario_Tree_Atlas_Entry",
+            label: "Ontario Tree Atlas Entry",
+            visible: true,
+          },
+          {
+            fieldName: "Trees_of_Canada_Entry",
+            label: "Trees of Canada Entry",
+            visible: true,
+          },
+        ],
+      }],
+    };
 
     //Create a layer object to import the street trees layer from ArcGIS Online
     streetTrees = new FeatureLayer({
@@ -89,38 +89,38 @@
   };
 
   //Buffer trees function
-  // function bufferTrees() {
-  //   if (map.layers._items.length < 2) {
-  //     const sym = {
-  //       type: "simple-fill",
-  //       color: [10, 10, 10, 0.5],
-  //       style: "solid",
-  //       outline: {
-  //         color: [0, 0, 0, 0],
-  //         width: 1,
-  //       },
-  //     };
-  //     streetTrees.queryFeatures().then((results) => {
-  //       const graphicsLayer = new GraphicsLayer({
-  //         title: "buffer"
-  //       });
-  //       results.features.map((feat) => {
-  //         const buffer = geometryEngine.geodesicBuffer(
-  //           feat.geometry,
-  //           feat.attributes.DBH && feat.attributes.DBH !== 0
-  //             ? feat.attributes.DBH / 3
-  //             : 10,
-  //           "meters"
-  //         );
-  //         setTimeout(() => {
-  //           const bufferGraphic = new Graphic({ geometry: buffer, symbol: sym });
-  //           graphicsLayer.add(bufferGraphic);
-  //         }, 10)
-  //       });
-  //       map.add(graphicsLayer, 0);
-  //     });
-  //   }
-  // }
+  function bufferTrees() {
+    if (map.layers._items.length < 2) {
+      const sym = {
+        type: "simple-fill",
+        color: [10, 10, 10, 0.5],
+        style: "solid",
+        outline: {
+          color: [0, 0, 0, 0],
+          width: 1,
+        },
+      };
+      streetTrees.queryFeatures().then((results) => {
+        const graphicsLayer = new GraphicsLayer({
+          title: "buffer"
+        });
+        results.features.map((feat) => {
+          const buffer = geometryEngine.geodesicBuffer(
+            feat.geometry,
+            feat.attributes.DBH && feat.attributes.DBH !== 0
+              ? feat.attributes.DBH / 3
+              : 10,
+            "meters"
+          );
+          setTimeout(() => {
+            const bufferGraphic = new Graphic({ geometry: buffer, symbol: sym });
+            graphicsLayer.add(bufferGraphic);
+          }, 10)
+        });
+        map.add(graphicsLayer, 0);
+      });
+    }
+  }
 </script>
 
 <main>
@@ -129,7 +129,7 @@
   </div>
   <div class="view" use:createMap />
   <div class="footer">
-    <!-- <button on:click={bufferTrees}>Buffer</button> -->
+    <button on:click={bufferTrees}>Buffer</button>
   </div>
 </main>
 
